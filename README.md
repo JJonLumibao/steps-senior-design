@@ -15,21 +15,10 @@ The repository contains the following main files:
   - `master.ino` – main game controller that handles initialization, game loop, and score tracking.
 
 - **Rhythm Game Files**  
-  Implements the rhythm-based gameplay, including song timing, tile sequences, and animations.  
+  Implements the rhythm-based gameplay, including song timing, tile sequences, and animations. 
   (Contains ~50 files; all located in the `rhythm-game` folder)*
   - `rhythm-game/` – folder with all rhythm game components, including:
     - Song data
     - Animation handlers
     - Game state management
     - Audio handling
-
-## How to Run
-
-1. Ensure all dependencies (if any) are installed.
-2. Open `master.ino` in your preferred environment to start the game.
-3. The input tiles will respond to your interactions, synced with the rhythm game mechanics.
-
-## Notes
-
-- Each component is modular and can be extended for additional functionality, such as adding new songs or tile effects.
-- The rhythm game folder contains multiple interdependent files; please do not rename or move files to avoid breaking the game.
