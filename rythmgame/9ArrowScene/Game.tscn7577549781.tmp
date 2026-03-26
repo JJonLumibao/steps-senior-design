@@ -1,0 +1,61 @@
+[gd_scene load_steps=11 format=3 uid="uid://bk374ib8x1sq4"]
+
+[ext_resource type="PackedScene" uid="uid://lhi5y6mg4a2c" path="res://DownArrow/down_arrow.tscn" id="1_0eyy2"]
+[ext_resource type="Script" uid="uid://cuywlyticl7bt" path="res://ClassicFour/game.gd" id="1_2gnyf"]
+[ext_resource type="PackedScene" uid="uid://vmniglm0734s" path="res://LeftArrow/left_arrow.tscn" id="1_gox45"]
+[ext_resource type="PackedScene" uid="uid://24kddq1nwywr" path="res://RightArrow/right_arrow.tscn" id="3_c4c6w"]
+[ext_resource type="PackedScene" uid="uid://4trfkm441e3q" path="res://UpArrow/up_arrow.tscn" id="4_vjsbt"]
+[ext_resource type="PackedScene" uid="uid://bfs5xobp27hpq" path="res://UpRightArrow/UpRightArrow.tscn" id="5_hoyt5"]
+[ext_resource type="Script" uid="uid://nipyyycnctrq" path="res://UpLeftArrow/UpLeft.gd" id="6_yaici"]
+[ext_resource type="Script" uid="uid://c5lpv6r38lqo8" path="res://DownRight/DownRight.gd" id="7_xxp3w"]
+[ext_resource type="Script" uid="uid://c7uggyweqivhu" path="res://DownLeft/DownLeft.gd" id="8_2gnyf"]
+[ext_resource type="PackedScene" uid="uid://dt4htqpir74id" path="res://middleNote/middleNote.tscn" id="10_2gnyf"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_2gnyf")
+
+[node name="UpArrow" parent="." instance=ExtResource("4_vjsbt")]
+position = Vector2(1274, 417)
+scale = Vector2(0.2, 0.2)
+
+[node name="DownArrow" parent="." instance=ExtResource("1_0eyy2")]
+position = Vector2(941, 417)
+scale = Vector2(0.2, 0.2)
+
+[node name="LeftArrow" parent="." instance=ExtResource("1_gox45")]
+position = Vector2(690, 417)
+scale = Vector2(0.2, 0.2)
+
+[node name="RightArrow" parent="." instance=ExtResource("3_c4c6w")]
+position = Vector2(1510, 417)
+scale = Vector2(0.2, 0.2)
+
+[node name="UpRightArrow" parent="." instance=ExtResource("5_hoyt5")]
+position = Vector2(1398, 417)
+scale = Vector2(0.2, 0.2)
+
+[node name="UpLeftArrow" parent="." instance=ExtResource("5_hoyt5")]
+position = Vector2(807, 417)
+rotation = -1.5708
+scale = Vector2(0.2, 0.2)
+script = ExtResource("6_yaici")
+
+[node name="DownRightArrow" parent="." instance=ExtResource("5_hoyt5")]
+position = Vector2(1608, 417)
+rotation = 1.5708
+scale = Vector2(0.2, 0.2)
+script = ExtResource("7_xxp3w")
+
+[node name="DownLeftArrow" parent="." instance=ExtResource("5_hoyt5")]
+position = Vector2(588, 417)
+rotation = 3.14159
+scale = Vector2(0.2, 0.2)
+script = ExtResource("8_2gnyf")
+
+[node name="MiddleNote" parent="." instance=ExtResource("10_2gnyf")]
+position = Vector2(1100, 417)
+scale = Vector2(0.1, 0.1)
+press_delay = null
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1100, 640)

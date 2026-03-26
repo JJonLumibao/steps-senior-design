@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://byuqe4dvwseil"]
+
+[ext_resource type="PackedScene" uid="uid://q8v6jpnyw41" path="res://BaseArrow/arrow.tscn" id="1_b45dn"]
+[ext_resource type="Script" uid="uid://nipyyycnctrq" path="res://UpLeftArrow/UpLeft.gd" id="2_iqel6"]
+
+[node name="UpLeftArrow" instance=ExtResource("1_b45dn")]
+rotation = -0.959931
+script = ExtResource("2_iqel6")
+
+[node name="Tail" parent="." index="2"]
+position = Vector2(-180.603, 266.849)
+rotation = 0.950147

@@ -1,0 +1,288 @@
+[gd_scene load_steps=13 format=3 uid="uid://dubyp30ucpky4"]
+
+[ext_resource type="Script" uid="uid://qvw0rp3u5eia" path="res://ChartCreator/chart_creator.gd" id="1_8r2ge"]
+[ext_resource type="Script" uid="uid://dkf4eq0jfb30j" path="res://ChartCreator/playfield.gd" id="2_kakgl"]
+[ext_resource type="PackedScene" uid="uid://4trfkm441e3q" path="res://UpArrow/up_arrow.tscn" id="2_m2jte"]
+[ext_resource type="PackedScene" uid="uid://lhi5y6mg4a2c" path="res://DownArrow/down_arrow.tscn" id="3_kakgl"]
+[ext_resource type="PackedScene" uid="uid://vmniglm0734s" path="res://LeftArrow/left_arrow.tscn" id="4_wwx2v"]
+[ext_resource type="PackedScene" uid="uid://24kddq1nwywr" path="res://RightArrow/right_arrow.tscn" id="5_rk1au"]
+[ext_resource type="PackedScene" uid="uid://byuqe4dvwseil" path="res://UpLeftArrow/UpLeftArrow.tscn" id="6_fgao3"]
+[ext_resource type="PackedScene" uid="uid://dkyb0c0hu67gy" path="res://UpRightArrow/UpRightArrow.tscn" id="7_8pxat"]
+[ext_resource type="PackedScene" uid="uid://c5oq1qinxs4dj" path="res://DownRight/DownRight.tscn" id="8_l8t52"]
+[ext_resource type="PackedScene" uid="uid://dhhg4g05gwjpu" path="res://DownLeft/DownLeft.tscn" id="9_jxjfs"]
+[ext_resource type="PackedScene" uid="uid://dt4htqpir74id" path="res://middleNote/middleNote.tscn" id="10_gjvqi"]
+[ext_resource type="AudioStream" uid="uid://dal6rseqanjh8" path="res://mp3files/osu-hit-sound.mp3" id="12_kakgl"]
+
+[node name="ChartCreator" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_8r2ge")
+
+[node name="TopBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.574
+offset_left = 960.0
+offset_top = 15.0
+offset_right = 960.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="BackToMain" type="Button" parent="TopBar"]
+layout_mode = 2
+text = "Back To Main Menu"
+
+[node name="OpenAudio" type="Button" parent="TopBar"]
+layout_mode = 2
+text = "Open audio"
+
+[node name="OpenChart" type="Button" parent="TopBar"]
+layout_mode = 2
+text = "Open Chart"
+
+[node name="SaveChart" type="Button" parent="TopBar"]
+layout_mode = 2
+text = "Save Chart"
+
+[node name="testChart" type="Button" parent="TopBar"]
+layout_mode = 2
+text = "Test Chart"
+
+[node name="Snap" type="Label" parent="TopBar"]
+layout_mode = 2
+text = "Snap:"
+
+[node name="Option" type="OptionButton" parent="TopBar"]
+layout_mode = 2
+selected = 0
+item_count = 4
+popup/item_0/text = "1/4"
+popup/item_0/id = 0
+popup/item_1/text = "1/8"
+popup/item_1/id = 1
+popup/item_2/text = "1/12"
+popup/item_2/id = 2
+popup/item_3/text = "1/16"
+popup/item_3/id = 3
+
+[node name="Main" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 40.0
+offset_top = 82.0
+offset_right = 1880.0
+offset_bottom = 952.0
+mouse_filter = 2
+
+[node name="Leftbar" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Lanes" type="Label" parent="Main/Leftbar"]
+layout_mode = 2
+text = "Lanes"
+
+[node name="ToggleButtons" type="GridContainer" parent="Main/Leftbar"]
+layout_mode = 2
+
+[node name="AddArrows" type="Button" parent="Main/Leftbar/ToggleButtons"]
+layout_mode = 2
+text = "Add Arrows"
+
+[node name="AddHolds" type="Button" parent="Main/Leftbar/ToggleButtons"]
+layout_mode = 2
+text = "Add Holds"
+
+[node name="SpinBox" type="SpinBox" parent="Main/Leftbar/ToggleButtons"]
+layout_mode = 2
+min_value = 0.2
+step = 0.2
+value = 1.0
+
+[node name="SelectMode" type="Button" parent="Main/Leftbar/ToggleButtons"]
+layout_mode = 2
+text = "Select mode"
+
+[node name="PoseMode" type="Button" parent="Main/Leftbar/ToggleButtons"]
+layout_mode = 2
+text = "Pose Mode
+"
+
+[node name="Center" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Playfield" type="Node2D" parent="Main/Center"]
+script = ExtResource("2_kakgl")
+
+[node name="UpArrow" parent="Main/Center" instance=ExtResource("2_m2jte")]
+position = Vector2(27.0001, 26.0001)
+scale = Vector2(0.2, 0.2)
+
+[node name="DownArrow" parent="Main/Center" instance=ExtResource("3_kakgl")]
+position = Vector2(-151, 26.0001)
+scale = Vector2(0.2, 0.2)
+
+[node name="LeftArrow" parent="Main/Center" instance=ExtResource("4_wwx2v")]
+position = Vector2(-312, 26.0001)
+scale = Vector2(0.2, 0.2)
+
+[node name="RightArrow" parent="Main/Center" instance=ExtResource("5_rk1au")]
+position = Vector2(182, 26.0001)
+scale = Vector2(0.2, 0.2)
+
+[node name="UpLeftArrow" parent="Main/Center" instance=ExtResource("6_fgao3")]
+position = Vector2(-230.6, 26.0001)
+scale = Vector2(0.2, 0.2)
+
+[node name="UpRightArrow" parent="Main/Center" instance=ExtResource("7_8pxat")]
+position = Vector2(103, 26.0001)
+scale = Vector2(0.2, 0.2)
+
+[node name="DownRightArrow" parent="Main/Center" instance=ExtResource("8_l8t52")]
+position = Vector2(253, 26)
+scale = Vector2(0.2, 0.2)
+
+[node name="DownLeftArrow" parent="Main/Center" instance=ExtResource("9_jxjfs")]
+position = Vector2(-386, 26.0001)
+scale = Vector2(0.2, 0.2)
+
+[node name="MiddleNote" parent="Main/Center" instance=ExtResource("10_gjvqi")]
+position = Vector2(-62.9999, 37.0001)
+scale = Vector2(0.1, 0.1)
+
+[node name="Inspector" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Selection" type="Label" parent="Main/Inspector"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Pose Selection"
+
+[node name="PoseName" type="OptionButton" parent="Main/Inspector"]
+layout_mode = 2
+selected = 0
+item_count = 7
+popup/item_0/text = "Samurai"
+popup/item_0/id = 0
+popup/item_1/text = "Point up(L)"
+popup/item_1/id = 1
+popup/item_2/text = "Point up(R)"
+popup/item_2/id = 2
+popup/item_3/text = "Stop"
+popup/item_3/id = 3
+popup/item_4/text = "Muscle Man"
+popup/item_4/id = 4
+popup/item_5/text = "What"
+popup/item_5/id = 5
+popup/item_6/text = "Tough Guy"
+popup/item_6/id = 6
+
+[node name="BottomBar" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 960.0
+offset_top = 984.0
+offset_right = 960.0
+offset_bottom = 40.0
+
+[node name="BackToStart" type="Button" parent="BottomBar"]
+layout_mode = 2
+text = "⏮"
+
+[node name="PlayButton" type="Button" parent="BottomBar"]
+layout_mode = 2
+text = "▶/⏸"
+
+[node name="CurrentTime" type="Label" parent="BottomBar"]
+layout_mode = 2
+text = "Current Time"
+
+[node name="BPM" type="Label" parent="BottomBar"]
+layout_mode = 2
+text = "BPM"
+
+[node name="Offset" type="SpinBox" parent="BottomBar"]
+layout_mode = 2
+
+[node name="BpmChangeMarker" type="Button" parent="BottomBar"]
+layout_mode = 2
+text = "BPM Change Marker"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="hitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_kakgl")
+
+[node name="Audio" type="FileDialog" parent="."]
+title = "Open a File"
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+
+[node name="Chart" type="FileDialog" parent="."]
+title = "Open a File"
+ok_button_text = "Open"
+file_mode = 0
+
+[node name="SaveChart" type="FileDialog" parent="."]
+auto_translate_mode = 1
+access = 2
+filters = PackedStringArray("*.json ; JSON Files")
+
+[node name="Seek" type="HSlider" parent="."]
+layout_mode = 2
+offset_left = 961.0
+offset_top = 936.0
+offset_right = 1461.0
+offset_bottom = 952.0
+
+[node name="Label" type="Label" parent="Seek"]
+layout_mode = 0
+offset_left = -93.0
+offset_top = -7.0
+offset_right = -24.0
+offset_bottom = 16.0
+text = "playback"
+
+[node name="song_speed" type="HSlider" parent="."]
+layout_mode = 2
+offset_left = 961.0
+offset_top = 898.0
+offset_right = 1461.0
+offset_bottom = 914.0
+min_value = 0.01
+max_value = 2.01
+value = 1.01
+
+[node name="Label" type="Label" parent="song_speed"]
+layout_mode = 0
+offset_left = -95.0
+offset_top = -24.0
+offset_right = -8.0
+offset_bottom = -1.0
+text = "song speed"
+
+[connection signal="pressed" from="TopBar/BackToMain" to="." method="_on_back_to_main_pressed"]
+[connection signal="pressed" from="TopBar/OpenAudio" to="." method="_on_open_audio_pressed"]
+[connection signal="pressed" from="TopBar/OpenChart" to="." method="_on_open_chart_pressed"]
+[connection signal="pressed" from="TopBar/SaveChart" to="." method="_on_save_chart_pressed"]
+[connection signal="pressed" from="TopBar/testChart" to="." method="_on_test_chart_pressed"]
+[connection signal="pressed" from="Main/Leftbar/ToggleButtons/AddArrows" to="." method="_on_add_arrows_pressed"]
+[connection signal="pressed" from="Main/Leftbar/ToggleButtons/AddHolds" to="." method="_on_add_holds_pressed"]
+[connection signal="value_changed" from="Main/Leftbar/ToggleButtons/SpinBox" to="." method="_on_spin_box_value_changed"]
+[connection signal="pressed" from="Main/Leftbar/ToggleButtons/SelectMode" to="." method="_on_erase_errows_pressed"]
+[connection signal="pressed" from="Main/Leftbar/ToggleButtons/PoseMode" to="." method="_on_pose_mode_pressed"]
+[connection signal="item_selected" from="Main/Inspector/PoseName" to="." method="_on_pose_name_item_selected"]
+[connection signal="pressed" from="BottomBar/BackToStart" to="." method="_on_back_to_start_pressed"]
+[connection signal="pressed" from="BottomBar/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="file_selected" from="Audio" to="." method="_on_audio_file_selected"]
+[connection signal="file_selected" from="Chart" to="." method="_on_chart_file_selected"]
+[connection signal="file_selected" from="SaveChart" to="." method="_on_save_chart_file_selected"]
+[connection signal="value_changed" from="Seek" to="." method="_on_seek_value_changed"]
+[connection signal="value_changed" from="song_speed" to="." method="_on_song_speed_value_changed"]

@@ -1,0 +1,257 @@
+[gd_scene load_steps=22 format=3 uid="uid://bk374ib8x1sq4"]
+
+[ext_resource type="PackedScene" uid="uid://lhi5y6mg4a2c" path="res://DownArrow/down_arrow.tscn" id="1_0eyy2"]
+[ext_resource type="PackedScene" uid="uid://vmniglm0734s" path="res://LeftArrow/left_arrow.tscn" id="1_gox45"]
+[ext_resource type="Script" uid="uid://cuywlyticl7bt" path="res://9ArrowScene/game.gd" id="1_sh2q5"]
+[ext_resource type="PackedScene" uid="uid://24kddq1nwywr" path="res://RightArrow/right_arrow.tscn" id="3_c4c6w"]
+[ext_resource type="PackedScene" uid="uid://4trfkm441e3q" path="res://UpArrow/up_arrow.tscn" id="4_vjsbt"]
+[ext_resource type="PackedScene" uid="uid://dkyb0c0hu67gy" path="res://UpRightArrow/UpRightArrow.tscn" id="5_hoyt5"]
+[ext_resource type="PackedScene" uid="uid://byuqe4dvwseil" path="res://UpLeftArrow/UpLeftArrow.tscn" id="7_sh2q5"]
+[ext_resource type="PackedScene" uid="uid://c5oq1qinxs4dj" path="res://DownRight/DownRight.tscn" id="8_fxsq8"]
+[ext_resource type="PackedScene" uid="uid://dhhg4g05gwjpu" path="res://DownLeft/DownLeft.tscn" id="9_rs42x"]
+[ext_resource type="PackedScene" uid="uid://dt4htqpir74id" path="res://middleNote/middleNote.tscn" id="10_2gnyf"]
+[ext_resource type="PackedScene" uid="uid://q8v6jpnyw41" path="res://BaseArrow/arrow.tscn" id="11_5h82b"]
+[ext_resource type="PackedScene" uid="uid://bma1i81i6xsn2" path="res://9ArrowScene/sceneSpawner.tscn" id="11_qytyx"]
+[ext_resource type="AudioStream" uid="uid://c3wvxnuwgdrqu" path="res://mp3files/bad_apple.mp3" id="12_a8lej"]
+[ext_resource type="Script" uid="uid://ce4tupnoxkkum" path="res://9ArrowScene/pause_menu.gd" id="14_fxsq8"]
+[ext_resource type="PackedScene" uid="uid://djhnqlbcx681n" path="res://UDP/udp.tscn" id="15_fxsq8"]
+[ext_resource type="FontFile" uid="uid://c5onj8ox0dd42" path="res://Fonts/Johnny Fever.otf" id="15_rs42x"]
+[ext_resource type="StyleBox" uid="uid://v2ee38t63vb7" path="res://Fonts/new_style_box_flat.tres" id="16_6u72i"]
+[ext_resource type="VideoStream" uid="uid://6ype52egn3cg" path="res://mp3files/【東方】Bad Apple!! ＰＶ【影絵】 - kasidid2 (360p, h264).ogv" id="18_6y0qc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rs42x"]
+bg_color = Color(0.598724, 0.300147, 0.910758, 1)
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6u72i"]
+bg_color = Color(1, 0.478431, 0.776471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6y0qc"]
+bg_color = Color(0, 0, 0, 0.32549)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_sh2q5")
+
+[node name="UpArrow" parent="." instance=ExtResource("4_vjsbt")]
+position = Vector2(3440, 96)
+scale = Vector2(0.2, 0.2)
+
+[node name="DownArrow" parent="." instance=ExtResource("1_0eyy2")]
+position = Vector2(3262, 96)
+scale = Vector2(0.2, 0.2)
+
+[node name="LeftArrow" parent="." instance=ExtResource("1_gox45")]
+position = Vector2(3101, 96)
+scale = Vector2(0.2, 0.2)
+
+[node name="RightArrow" parent="." instance=ExtResource("3_c4c6w")]
+position = Vector2(3595, 96)
+rotation = 1.57079
+scale = Vector2(0.2, 0.2)
+
+[node name="UpLeftArrow" parent="." instance=ExtResource("7_sh2q5")]
+position = Vector2(3182.4, 96)
+rotation = -0.785397
+scale = Vector2(0.2, 0.2)
+
+[node name="UpRightArrow" parent="." instance=ExtResource("5_hoyt5")]
+position = Vector2(3516, 96)
+scale = Vector2(0.2, 0.2)
+
+[node name="DownRightArrow" parent="." instance=ExtResource("8_fxsq8")]
+position = Vector2(3666, 96)
+rotation = 2.35619
+scale = Vector2(0.2, 0.2)
+
+[node name="DownLeftArrow" parent="." instance=ExtResource("9_rs42x")]
+position = Vector2(3027, 96)
+rotation = -2.09439
+scale = Vector2(0.2, 0.2)
+
+[node name="MiddleNote" parent="." instance=ExtResource("10_2gnyf")]
+position = Vector2(3350, 107)
+scale = Vector2(0.1, 0.1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(3350, 500)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_a8lej")
+
+[node name="sceneSpawner" parent="." instance=ExtResource("11_qytyx")]
+position = Vector2(553, 1123)
+arrow_scene = ExtResource("11_5h82b")
+
+[node name="NoteScore" type="RichTextLabel" parent="."]
+offset_left = 3209.0
+offset_top = 205.0
+offset_right = 3491.0
+offset_bottom = 296.0
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ComboScoring" type="RichTextLabel" parent="."]
+offset_left = 2564.0
+offset_top = 880.0
+offset_right = 2907.0
+offset_bottom = 1000.0
+theme_override_fonts/normal_font = ExtResource("15_rs42x")
+theme_override_fonts/bold_font = ExtResource("15_rs42x")
+theme_override_font_sizes/bold_italics_font_size = 301
+theme_override_font_sizes/italics_font_size = 151
+theme_override_font_sizes/mono_font_size = 181
+theme_override_font_sizes/normal_font_size = 76
+theme_override_font_sizes/bold_font_size = 91
+bbcode_enabled = true
+text = "[b][color=white] x0 [/color][/b]
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GlobalScoring" type="RichTextLabel" parent="."]
+offset_left = 2631.0
+offset_top = 60.0
+offset_right = 2913.0
+offset_bottom = 151.0
+theme_override_fonts/normal_font = ExtResource("15_rs42x")
+theme_override_fonts/bold_font = ExtResource("15_rs42x")
+theme_override_font_sizes/bold_italics_font_size = 51
+theme_override_font_sizes/italics_font_size = 346
+theme_override_font_sizes/mono_font_size = 541
+theme_override_font_sizes/normal_font_size = 31
+theme_override_font_sizes/bold_font_size = 1
+bbcode_enabled = true
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(1.6, 1.6)
+transform = Transform2D(1.6, 0, 0, 1.6, 0, 0)
+
+[node name="PauseMenu" type="Control" parent="CanvasLayer"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("14_fxsq8")
+
+[node name="Exit" type="Button" parent="CanvasLayer/PauseMenu"]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 57.0
+offset_right = 507.0
+offset_bottom = 216.0
+theme_override_fonts/font = ExtResource("15_rs42x")
+theme_override_styles/normal = ExtResource("16_6u72i")
+text = "Exit"
+
+[node name="Main Menu" type="Button" parent="CanvasLayer/PauseMenu"]
+layout_mode = 0
+offset_left = 227.0
+offset_top = 374.0
+offset_right = 498.0
+offset_bottom = 533.0
+theme_override_fonts/font = ExtResource("15_rs42x")
+theme_override_styles/normal = ExtResource("16_6u72i")
+text = "Main Menu"
+
+[node name="BackToEditor" type="Button" parent="CanvasLayer/PauseMenu"]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 219.0
+offset_right = 769.0
+offset_bottom = 378.0
+theme_override_fonts/font = ExtResource("15_rs42x")
+theme_override_styles/normal = ExtResource("16_6u72i")
+text = "Back To Editor"
+
+[node name="Resume" type="Button" parent="CanvasLayer/PauseMenu"]
+layout_mode = 0
+offset_left = 766.0
+offset_top = 389.0
+offset_right = 1037.0
+offset_bottom = 548.0
+theme_override_fonts/font = ExtResource("15_rs42x")
+theme_override_styles/normal = ExtResource("16_6u72i")
+text = "Resume"
+
+[node name="Restart" type="Button" parent="CanvasLayer/PauseMenu"]
+layout_mode = 0
+offset_left = 759.0
+offset_top = 51.0
+offset_right = 1030.0
+offset_bottom = 210.0
+theme_override_fonts/font = ExtResource("15_rs42x")
+theme_override_styles/normal = ExtResource("16_6u72i")
+text = "Restart"
+
+[node name="UDP" parent="." instance=ExtResource("15_fxsq8")]
+
+[node name="CurrentPoseText" type="Label" parent="."]
+offset_left = 2772.0
+offset_top = 222.0
+offset_right = 2882.0
+offset_bottom = 245.0
+theme_override_fonts/font = ExtResource("15_rs42x")
+text = "Current Pose: "
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 2528.0
+offset_top = 975.0
+offset_right = 3458.0
+offset_bottom = 1082.0
+rotation = -1.5708
+theme_override_styles/background = SubResource("StyleBoxFlat_rs42x")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6u72i")
+value = 50.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+z_index = -40
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2385.0
+offset_top = -43.0
+offset_right = 4305.0
+offset_bottom = 1037.0
+stream = ExtResource("18_6y0qc")
+volume_db = -80.0
+autoplay = true
+expand = true
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -35
+offset_left = 2388.0
+offset_top = -37.0
+offset_right = 4308.0
+offset_bottom = 1043.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6y0qc")
+
+[node name="Panel2" type="Panel" parent="."]
+z_index = -35
+offset_left = 2645.0
+offset_top = 840.0
+offset_right = 2845.0
+offset_bottom = 1040.0
+
+[node name="Panel3" type="Panel" parent="."]
+z_index = -35
+offset_left = 2640.0
+offset_top = 74.0
+offset_right = 2989.13
+offset_bottom = 274.0
+
+[connection signal="finished" from="AudioStreamPlayer" to="sceneSpawner" method="_on_audio_stream_player_finished"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/Exit" to="CanvasLayer/PauseMenu" method="_on_exit_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/Main Menu" to="CanvasLayer/PauseMenu" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/BackToEditor" to="CanvasLayer/PauseMenu" method="_on_back_to_editor_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/Resume" to="CanvasLayer/PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/Restart" to="CanvasLayer/PauseMenu" method="_on_restart_pressed"]
