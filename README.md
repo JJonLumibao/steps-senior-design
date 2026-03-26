@@ -8,7 +8,7 @@ The repository contains the following main files:
 
 - **Input Tile Files**  
   Handles tile creation, input detection, and interaction logic.
-  - `input_tile.ino` (or relevant file names) – defines the behavior of individual tiles when pressed or activated.
+  - `input_tile.ino` – defines the behavior of individual tiles when pressed or activated.
 
 - **Master Files**  
   Coordinates the overall game logic, manages states, scoring, and timing.
